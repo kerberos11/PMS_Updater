@@ -1,6 +1,15 @@
 PMS_Updater
 ===========
+---
+This script has been edited to work with the default pkg installation paths as well as changing the service from plexmediaserver to plexmediaserver_plexpass. If you aren't using a PlexPass version then you will have to edit the service in this script back to plexmediaserver .
 
+This has been tested with the old warden jails as well as the new iocage jails.
+
+***CAVEAT*** 
+
+Sometimes the URL for the plexpass downloads doesnt work. I usually download the update directly in the jail (or copy it to the server) and use the -l option when using this script. Works great so far despite being a little annoying.
+
+---
 PMS_Updater.sh is a shell script for updating the Plex Media Server inside the FreeNAS Plex plugin
 
 ---
