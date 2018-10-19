@@ -5,8 +5,8 @@ URLPLEXPASS="https://plex.tv/api/downloads/1.json?channel=plexpass"
 DOWNLOADPATH="/tmp"
 LOGPATH="/tmp"
 LOGFILE="PMS_Updater.log"
-PMSPARENTPATH="/usr/pbi/plexmediaserver-amd64/share"
-PMSLIVEFOLDER="plexmediaserver"
+PMSPARENTPATH="/usr/local/share"
+PMSLIVEFOLDER="plexmediaserver-plexpass"
 PMSBAKFOLDER="plexmediaserver.bak"
 CERTFILE="/usr/local/share/certs/ca-root-nss.crt"
 AUTOUPDATE=0
@@ -127,7 +127,7 @@ webGet()
 
     if [ $VERBOSE = 1 ]; then QUIET=""; fi
     echo Downloading $1 | LogMsg
-    wget $QUIET $LOGININFO --auth-no-challenge --ca-certificate=$CERTFILE --timestamping --directory-prefix="$DOWNLOADPATH" "$1"
+    wget $QUIET $LOGININFO --auth-no-challenge --no-check-certificate --ca-certificate=$CERTFILE --timestamping --directory-prefix="$DOWNLOADPATH" "$1"
     if [ $? -ne 0 ]; then
         echo Error downloading $1
         exit 1
@@ -180,7 +180,7 @@ applyUpdate()
     rm -rf $PMSPARENTPATH/$PMSBAKFOLDER 2>&1 | LogMsg
     echo Done. | LogMsg -f
     echo Stopping Plex Media Server .....| LogMsg -n
-    service plexmediaserver stop 2>&1 | LogMsg
+    service plexmediaserver_plexpass stop 2>&1 | LogMsg
     echo Done. | LogMsg -f
     echo Moving current Plex Media Server to backup location .....| LogMsg -n
     mv $PMSPARENTPATH/$PMSLIVEFOLDER/ $PMSPARENTPATH/$PMSBAKFOLDER/ 2>&1 | LogMsg
@@ -198,7 +198,7 @@ applyUpdate()
     ln -s $PMSPARENTPATH/$PMSLIVEFOLDER/Plex\ Media\ Server $PMSPARENTPATH/$PMSLIVEFOLDER/Plex_Media_Server 2>&1 | LogMsg
     ln -s $PMSPARENTPATH/$PMSLIVEFOLDER/libpython2.7.so.1 $PMSPARENTPATH/$PMSLIVEFOLDER/libpython2.7.so 2>&1 | LogMsg
     echo Starting Plex Media Server .....| LogMsg -n
-    service plexmediaserver start
+    service plexmediaserver_plexpass start
     echo Done. | LogMsg -f
 }
 
