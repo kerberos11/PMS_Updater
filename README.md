@@ -1,7 +1,7 @@
 PMS_Updater
 ===========
 ---
-This script has been edited to work with the default pkg installation paths as well as changing the service from plexmediaserver to plexmediaserver_plexpass. If you aren't using a PlexPass version then you will have to edit the service in this script back to plexmediaserver .
+This script has been edited to work with the default pkg installation paths as well as changing the service from plexmediaserver to plexmediaserver_plexpass. If you aren't using a PlexPass version then you will have to edit the service in this script back to plexmediaserver as well as edit the file path to plexdata .
 
 This has been tested with the old warden jails as well as the new iocage jails.
 
