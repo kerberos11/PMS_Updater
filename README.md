@@ -1,5 +1,17 @@
 PMS_Updater
 ===========
+***NEW***
+
+Version PlexMediaServer-1.15.0.659-9311f93fd and above have moved a bunch of files into a lib folder after extraction. As a result the rc.d file needs to be updated.
+
+1. edit /usr/local/etc/rc.d/plexmediaserver_plexpass using ee or nano etc. 
+
+2. using your editor search for "library" and add " /lib " to the end of the line. It should look like this. 
+
+export LD_LIBRARY_PATH="/usr/local/lib/compat:${SCRIPTPATH}"/lib
+
+3. Save and you're done. 
+
 ---
 This script has been edited to work with the default pkg installation paths as well as changing the service from plexmediaserver to plexmediaserver_plexpass. If you aren't using a PlexPass version then you will have to edit the service in this script back to plexmediaserver as well as edit the file path to plexdata .
 
