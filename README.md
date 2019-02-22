@@ -6,7 +6,7 @@ Version PlexMediaServer-1.15.0.659-9311f93fd and above have moved a bunch of fil
 
 1. edit /usr/local/etc/rc.d/plexmediaserver_plexpass using ee or nano etc. 
 
-2. using your editor search for "library" and add " /lib " to the end of the line. It should look like this. 
+2. using your editor search for "library" and add " /lib " to the end of the line. It should look like this: 
 
 export LD_LIBRARY_PATH="/usr/local/lib/compat:${SCRIPTPATH}"/lib
 
